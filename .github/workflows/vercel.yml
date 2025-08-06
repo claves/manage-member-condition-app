@@ -15,6 +15,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          path: .
       
       # https://bun.sh/guides/runtime/cicd
       - name: Setup Bun
