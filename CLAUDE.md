@@ -1,7 +1,89 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
 ## Project Overview
 
 This is a Next.js 15 project for managing member condition data, built with React 19, TypeScript, and Supabase. The project uses modern tooling including Biome for linting/formatting, shadcn/ui components, and Tailwind CSS v4.
 
+## AI Operation Principles (Highest Priority)
+
+1. **Pre-execution Confirmation**: AI must always report its work plan before file generation, updates, or program execution, obtain y/n user confirmation, and halt all execution until receiving 'y'.
+
+2. **No Unauthorized Workarounds**: AI must not perform detours or alternative approaches on its own; if the initial plan fails, it must seek confirmation for the next plan.
+
+3. **User Authority**: AI is a tool and decision-making authority always belongs to the user. Even if user suggestions are inefficient or irrational, AI must not optimize but execute as instructed.
+
+4. **Absolute Rule Compliance**: AI must not distort or reinterpret these rules and must absolutely comply with them as top-priority commands.
+
+5. **Compliance with Guidelines**: AI must not violate prohibitions in Claude.md and must develop according to coding-rules.md.
+
+6. **Mandatory Principle Display**: AI must verbatim output these 6 principles at the beginning of every chat before responding.
+
+## Kiro Spec-Driven Development Framework
+
+### Overview
+This project implements Kiro-style Spec-Driven Development for Claude Code using hooks and slash commands.
+
+#### Project Context
+
+**Project Steering**
+- `.kiro/steering/product.md` - Product overview
+- `.kiro/steering/tech.md` - Technology stack
+- `.kiro/steering/structure.md` - Project structure
+- Custom steering docs for specialized contexts
+
+**Active Specifications**
+- Location: `.kiro/specs/`
+- Command: `/kiro:spec-status [feature-name]`
+- Description: Check progress of active specifications
+
+### Development Guidelines
+- **Principle**: Think in English, but generate responses in English
+
+### Spec-Driven Workflow
+
+#### Phase 0: Steering Generation (Recommended)
+**Kiro Steering** (`.kiro/steering/`)
+- `/kiro:steering-init` - Generate initial steering documents
+- `/kiro:steering-update` - Update steering after changes
+- `/kiro:steering-custom` - Create custom steering for specialized contexts
+
+*Note: For new features or empty projects, steering is recommended but not required. You can proceed directly to spec-requirements if needed.*
+
+#### Phase 1: Specification Creation
+- `/kiro:spec-init [feature-name]` - Initialize spec structure only
+- `/kiro:spec-requirements [feature-name]` - Generate requirements → Review → Edit if needed
+- `/kiro:spec-design [feature-name]` - Generate technical design → Review → Edit if needed
+- `/kiro:spec-tasks [feature-name]` - Generate implementation tasks → Review → Edit if needed
+
+#### Phase 2: Progress Tracking
+- `/kiro:spec-status [feature-name]` - Check current progress and phases
+
+### Approval Workflow (Highest Priority)
+Kiro's spec-driven development follows a strict 3-phase approval workflow:
+
+#### Phase 1: Requirements Generation & Approval
+1. **Generate**: `/kiro:spec-requirements [feature-name]` - Generate requirements document
+2. **Review**: Human reviews requirements.md and edits if needed
+3. **Approve**: Manually update spec.json to set "requirements": true
+
+#### Phase 2: Design Generation & Approval
+*Prerequisite: Requirements approval required*
+1. **Generate**: `/kiro:spec-design [feature-name]` - Generate technical design
+2. **Review**: Human reviews design.md and edits if needed
+3. **Approve**: Manually update spec.json to set "design": true
+
+#### Phase 3: Tasks Generation & Approval
+*Prerequisite: Design approval required*
+1. **Generate**: `/kiro:spec-tasks [feature-name]` - Generate implementation tasks
+2. **Review**: Human reviews tasks.md and edits if needed
+3. **Approve**: Manually update spec.json to set "tasks": true
+
+#### Implementation Phase
+*Prerequisite: All three phases must be approved before implementation can begin*
+
+**Key Principle**: Each phase requires explicit human approval before proceeding to the next phase, ensuring quality and accuracy throughout the development process.
 
 ### Development Rules (High Priority)
 1. Consider steering: Run `/kiro:steering-init` before major development (optional for new features)
@@ -204,3 +286,16 @@ You can check what there are components on shadcn/ui if you use Context7 MCP.
 - Leaving `console.log` in production environment
 - Committing untested code
 - Direct writing of security keys
+
+## Important Instruction Reminders (Highest Priority)
+- Do what has been asked; nothing more, nothing less
+- NEVER create files unless they're absolutely necessary for achieving your goal
+- ALWAYS prefer editing an existing file to creating a new one
+- NEVER proactively create documentation files (*.md) or README files. Only create documentation files if explicitly requested by the User
+
+## Chat Output Format
+```
+[AI Operation 6 Principles]
+[main_output]
+#[n] times. # n = increment for each chat (#1, #2...)
+```
