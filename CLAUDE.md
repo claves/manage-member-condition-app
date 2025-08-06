@@ -37,6 +37,7 @@ This project implements Kiro-style Spec-Driven Development for Claude Code using
 - Location: `.kiro/specs/`
 - Command: `/kiro:spec-status [feature-name]`
 - Description: Check progress of active specifications
+- `member-condition-mvp` - MVP for member health status management application
 
 ### Development Guidelines
 - **Principle**: Think in English, but generate responses in English

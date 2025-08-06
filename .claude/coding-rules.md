@@ -14,6 +14,10 @@ This coding standard is based not only on the Next.js documentation but also on 
 -  Use kebab-case for file and folder names (excluding dynamic routes).
 -  Use camelCase for variable and function names.
 
+## Define Type
+- Use type alias so mustn't use interface
+- Use utilities of TypeScript as possible as we can
+
 ### Regarding Function Definitions
 -  Use function declarations to ensure consistency across individual implementations (e.g., `export default async function sample() {}`).
 
